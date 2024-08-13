@@ -20,11 +20,11 @@ ___________________________________________________________
 
 Requirements:-
 --------------
-Don't Forget To Change The database Connection Server in appsettings.json ("ConStr3": "Server=Your Server Name;Database=Fly_up;Trusted_Connection=True;TrustServerCertificate=True"
+Don't Forget To Change The database Connection Server in appsettings.json ("ConStr3": "Server=Your Server Name;Database=Fly_up;Trusted_Connection=True;TrustServerCertificate=True")
 
-Then : in Package Manager Console Type Add-Migration YourDatabaseName 
+Then : in Package Manager Console Type | Add-Migration YourDatabaseName |
 
-Submit Then Update-Database
+Submit Then | Update-Database |
 
 Don't Forget also To Extract wwwroot.rar in Fly Up Folder
 
