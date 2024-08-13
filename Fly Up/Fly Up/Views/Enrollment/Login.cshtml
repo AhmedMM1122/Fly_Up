@@ -1,0 +1,58 @@
+﻿@model Enroll
+
+@{
+    ViewData["Title"] = "Login";
+}
+<section class="relative about-banner">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Login
+                </h1>
+                <p class="text-white link-nav"><a asp-area="" asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-area="" asp-controller="Enrollment" asp-action="Login"> Login</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact-page-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 d-flex flex-column address-wrap">
+            </div>
+            <div class="col-lg-8">
+                <form class="form-area contact-form text-right" method="post" asp-controller="Enrollment" asp-action="Login" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="Enrollsinfo" />
+                <input type="hidden" asp-for="Is_Deleted" />
+                <input type="hidden" asp-for="FirstName" />
+                <input type="hidden" asp-for="LastName" />
+                <input type="hidden" asp-for="Confirmpwd" />
+                <input type="hidden" asp-for="Gender" />
+                <input type="hidden" asp-for="PhoneNumber" />
+
+                <div class="col-lg-6 form-group">
+
+                        <input placeholder="Enter your Email" onblur="this.placeholder = 'Enter your Email'" class="common-input mb-20 form-control" required="" type="email" asp-for="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                        <input placeholder="Enter Your Password" onblur="this.placeholder = 'Enter Your Password'" class="common-input mb-20 form-control" required="" type="password" asp-for="Password" style="position: relative;
+                                width: 100%;
+                                min-height: 1px;
+                                padding-right: 15px;
+                                padding-left: 15px;
+                                border: 1px solid #ced4da;">
+                        <span asp-validation-for="Password" class="text-danger"></span> 
+                                <i class="uil uil-lock icon"></i>
+                                <i class="uil uil-eye-slash showHidePw"></i>
+                </div>
+
+
+                <div class="alert-msg" style="text-align: left;"></div>
+                <button class="genric-btn primary"type="submit" style="float: right;margin-right: 67%;">Login</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>

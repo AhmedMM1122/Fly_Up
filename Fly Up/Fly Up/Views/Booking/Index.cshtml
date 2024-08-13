@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Booking>
+
+<section class="banner-area relative">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row fullscreen align-items-center justify-content-between">
+			<div class="col-lg-6 col-md-6 banner-left">
+
+				<h1 class="text-white"> BOOKING</h1>
+				<p class="text-white link-nav"><a asp-area="" asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-area="" asp-controller="Booking" asp-action="GetIndexView">  BOOKING</a><span class="lnr lnr-arrow-right"></span><a asp-area="" asp-controller="Booking" asp-action="GetCreateView"> Book Now </a></p>
+			</div>
+			
+		</div>
+	</div>
+</section>
+
+
+<!-- End banner Area -->
+<!-- Start insurence-one Area -->
+<section class="insurence-one-area section-gap">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 insurence-left">
+				<img class="img-fluid img-one" src="~/img/insurence/flight.jpg" alt="">
+			</div>
+			<div class="col-lg-6 insurence-right">
+				<h6 class="text-uppercase">Need to know</h6>
+				<h1>Flights</h1>
+				<p>
+					Here, I focus on a range of items and features that we use in life without giving them a second thought. such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+				</p>
+
+				<div class="list-wrap">
+					<ul>
+						<li>Strategic approach towards redesigning brand.</li>
+						<li>
+							Use online travel agencies or airline websites to compare prices.
+							Consider booking in advance for better deals.
+						</li>
+						<li>Economy class is standard; business and first class offer more amenities.</li>
+						<li>Consider your budget and travel preferences.</li>
+					</ul>
+					<a asp-area="" asp-controller="Flights" asp-action="GetIndexView" class="primary-btn text-uppercase">Flight Page </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End insurence-one Area -->
+
+<!-- Start insurence-two Area -->
+<section class="insurence-two-area pb-120">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 insurence-left">
+				<h6 class="text-uppercase">Need to know</h6>
+				<h1>Ticket</h1>
+				<p>
+					when you Choose a flight that fits your schedule and budget.
+				</p>
+				<div class="list-wrap">
+					<ul>
+						<li>Review the flight details, including the total cost, baggage fees, and any other relevant information.</li>
+						<li>
+							Enter passenger details and payment information.
+							Confirm your booking and make the payment.
+						</li>
+						<li>Once the payment is processed, you will receive a booking confirmation via email.</li>
+						<li>If possible, be flexible with your travel dates for potential cost savings.</li>
+					</ul>
+					<a asp-area="" asp-controller="Tickets" asp-action="GetIndexView" class="primary-btn text-uppercase">Ticket Page </a>
+				</div>
+			</div>
+			<div class="col-lg-6 insurence-right">
+				<img class="img-fluid img-two" src="~/img/insurence/ticket.jpg" alt="">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End insurence-two Area -->		

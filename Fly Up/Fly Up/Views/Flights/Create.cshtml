@@ -1,0 +1,95 @@
+﻿@model Flight
+<!-- start banner Area -->
+<section class="relative about-banner">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Flights MANAGEMENT
+				</h1>
+				<p class="text-white link-nav"><a asp-area="" asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-area="" asp-controller="Flights" asp-action="GetCreateView"> Management</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<section class="contact-page-area section-gap">
+	<div class="container">
+		<div class="row">
+		</div>
+		<div class="col-lg-8" style="margin-left:22%;">
+			<form class="form-area contact-form text-right" method="post" asp-controller="Flights" asp-action="AddNew" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-lg-6 form-group">
+						<input placeholder="Enter your Flight Name" onblur="this.placeholder = 'Enter your Flight Name'" class="common-input mb-20 form-control" required="" type="text" asp-for="Name">
+						<span asp-validation-for="Name" class="text-danger"></span>
+						<input  placeholder="Enter Country Name" onblur="this.placeholder = 'Enter Country Name'" class="common-input mb-20 form-control" required="" type="text" asp-for="Destinition">
+						<span asp-validation-for="Destinition" class="text-danger"></span>
+						<input placeholder="Enter Average Price" onblur="this.placeholder = 'Enter Average Price'" class="common-input mb-20 form-control" required="" type="number" asp-for="Price">
+						<span asp-validation-for="Price" class="text-danger"></span>
+
+						<input placeholder="Enter takeoff time" onblur="this.placeholder = 'Enter takeoff time'" class="common-input mb-20 form-control" required="" type="datetime-local" asp-for="TakeoffTime">
+						<span asp-validation-for="TakeoffTime" class="text-danger"></span>
+
+						<input  placeholder="Enter Capacity"  onblur="this.placeholder = 'Enter Capacity'" class="common-input mb-20 form-control" required="" type="number" asp-for="Capacity">
+						<span asp-validation-for="Capacity" class="text-danger"></span>
+
+
+
+						<div>
+							
+								<input type="checkbox" asp-for="IsAvailable">
+								<label for="IsAvailable" class="text">IsAvailable </label>
+								
+							
+						</div>
+
+
+						
+
+
+						<div class="checkbox-text" style="margin-right:69%;">
+
+							
+							<div>
+								<label asp-for="ImagePath"></label>
+								<input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg" class="form-control" onchange="SetImgSrc()" />
+							</div>
+
+
+
+
+						</div>
+
+					</div>
+
+					<div class="col-lg-6 form-group">
+						<textarea class="common-textarea form-control"  placeholder="Enter Your Description"  onblur="this.placeholder = 'Enter Messege'" required="" asp-for="Description"></textarea>
+						<span asp-validation-for="Description" class="text-danger"></span>
+
+						</br>
+						
+
+					</div>
+					<div class="col-lg-12">
+						<div class="alert-msg" style="text-align: left;"></div>
+						<button class="genric-btn primary" style="float: right;" type="submit">ADD</button>
+					</div>
+					
+
+				</div>
+			</form>
+			<img src="" id="fliImage" class="col-4 card" style="object-fit:contain" />
+		</div>
+	</div>
+
+</section>
+@section Scripts{
+	<script>
+		function SetImgSrc() {
+
+			document.getElementById("fliImage").src = window.URL.createObjectURL(document.getElementById("imageFormFile").files[0]);
+		}
+	</script>
+}

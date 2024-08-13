@@ -1,0 +1,52 @@
+﻿@model Booking
+<section class="relative about-banner">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Book
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<section class="contact-page-area section-gap">
+	<div class="container">
+<div class="col-lg-8" style="margin-left:22%;">
+
+	<form class="form-wrap" method="post" asp-controller="Booking" asp-action="BookFlight" enctype="multipart/form-data">
+				<input type="hidden" asp-for="BookingDate" />
+				<input placeholder="Enter your Name" onblur="this.placeholder = 'Enter your Name'" class="common-input mb-20 form-control" required="" type="text" asp-for="PassengerName">
+				<input placeholder="Enter your Email" onblur="this.placeholder = 'Enter your Email'" class="common-input mb-20 form-control" required="" type="text" asp-for="PassengerEmail">
+				<input placeholder="Enter your Number" onblur="this.placeholder = 'Enter your Number'" class="common-input mb-20 form-control" required="" type="number" asp-for="PassengerPhoneNumber">
+				<div>
+					<label asp-for="FlightId"></label>
+					<select asp-for="FlightId" asp-items="@(new SelectList(ViewBag.AllFlights,"Id","Name"))" class="form-control">
+						<option selected disabled>Select Flight...</option>
+					</select>
+					<span asp-validation-for="FlightId" class="text-danger"></span>
+
+				</div>
+				<div>
+					<label asp-for="TicketId"></label>
+					<select asp-for="TicketId" asp-items="@(new SelectList(ViewBag.AllTickets,"Id","Name"))" class="form-control">
+						<option selected disabled>Select Ticket...</option>
+					</select>
+					<span asp-validation-for="TicketId" class="text-danger"></span>
+
+				</div><br /> <br />
+
+				<div class="col-lg-12">
+					<div class="alert-msg" style="text-align: left;"></div>
+					<button class="genric-btn primary" style="float: right;" type="submit">ADD</button>
+				</div>
+				
+			</form>
+		
+		
+	</div>
+	</div>
+	</section>

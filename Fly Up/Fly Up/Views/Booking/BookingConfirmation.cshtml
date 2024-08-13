@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Booking Confirmation";
+}
+
+<div class="container">
+    <h2>Booking Confirmation</h2>
+
+    <div class="alert alert-success" role="alert">
+        @ViewBag.ConfirmationMessage
+    </div>
+
+    <h4>Passenger Details</h4>
+    <p><strong>Name:</strong> @ViewBag.PassengerName</p>
+
+    <h4>Flight Details</h4>
+    <p><strong>Flight:</strong> @ViewBag.FlightDetails</p>
+
+    <!-- Add more details as needed -->
+
+    <p>Thank you for booking with us!</p>
+</div>

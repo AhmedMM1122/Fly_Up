@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Ticket>
+
+<!-- start banner Area -->
+<section class="about-banner relative">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Tickets
+				</h1>
+				<p class="text-white link-nav"><a asp-area="" asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-area="" asp-controller="Tickets" asp-action="GetIndexView"> Tickets</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<!-- Start destinations Area -->
+<section class="hot-deal-area section-gap">
+	<form method="get" asp-controller="Tickets" asp-action="GetIndexView" class="search-form" style="width: 50%; margin-left: 25%;">
+		<div class="input-group">
+			<input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Search for Tickets...">
+			<div class="input-group-append">
+				<button type="submit" class="btn btn-primary">
+					<i class="bi bi-search"></i> Search
+				</button>
+			</div>
+		</div>
+	</form>
+
+	<div class="container">
+	</div>
+</section>
+<section class="destinations-area section-gap">
+	
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-40 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">Popular Destinations</h1>
+					<p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			@if (Model.Count() > 0)
+			{
+				@foreach(var item in Model)
+				{
+					<div class="col-lg-4">
+						<div class="single-destinations">
+							<div class="thumb">
+								<img src="@item.ImagePath" alt="">
+							</div>
+							<div class="details">
+								<h4 class="d-flex justify-content-between">
+									<span>@item.Name</span>
+									<div class="star">
+										@for (int i = 1; i <= 7; i++)
+										{
+											<span class="fa fa-star @(i <= item.Rating ? "checked" : "")"></span>
+										}
+									</div>
+								</h4>
+								<p>
+									Release Date   |   @item.ReleaseDate
+								</p>
+								<ul class="package-list">
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Flight Name |</span>
+										<span>@item.Flight.Name</span>
+									</li>
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Description:|</span>
+										<span class="update-description">@item.Description</span>
+									</li>
+									
+									<li class="d-flex justify-content-between align-items-center">
+										<span>Price OF The Ticket</span>
+										<a asp-area="" asp-controller="Booking" asp-action="GetCreateView" class="price-btn">$@item.Price</a>
+									</li>
+									<a asp-controller="Tickets" asp-action="GetEditView" asp-route-id="@item.Id" class="update-icon"><i class="fas fa-pencil-alt"></i></a>
+
+									<a href="#" class="delete-icon" onclick="deleteTicket('@item.Id')">
+										<i class="fas fa-trash"></i> <!-- Font Awesome trash icon -->
+									</a>
+								</ul>
+							</div>
+						</div>
+					</div>
+				}
+			}
+			
+			
+		</div>
+	</div>
+</section>
+<!-- End destinations Area -->
+<!-- Start home-about Area -->
+<!-- Start home-about Area -->
+<section class="home-about-area">
+	<div class="container-fluid">
+		<div class="row align-items-center justify-content-end">
+			<div class="col-lg-6 col-md-12 home-about-left">
+				<h1>
+					Found <br>
+					Your Expections <br>
+					Then What are you Wating for ?
+				</h1>
+				<p>
+					You found Your imagination So come in let's Book Your imagination to become reality.
+				</p>
+				<a asp-area="" asp-controller="Booking" asp-action="GetCreateView" class="primary-btn text-uppercase">Book </a>
+			</div>
+			<div class="col-lg-6 col-md-12 home-about-right no-padding">
+				<img class="img-fluid" src="~/img/packages/R.jpg" alt="">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End home-about Area -->
+
+<script>
+	function deleteTicket(ticketId) {
+		if (confirm("Are you sure you want to delete this flight?")) {
+			// Perform the delete operation using AJAX
+			$.ajax({
+				url: "/Tickets/DeleteCurrent",
+				method: "POST",
+				data: { id: ticketId },
+				success: function (data) {
+					// Handle success, if needed
+					console.log("Flight deleted successfully");
+					// Optionally, you can reload the page or update the UI
+					window.location.reload();
+				},
+				error: function (error) {
+					// Handle error, if needed
+					console.error("Error deleting flight");
+				}
+			});
+		}
+	}
+</script>

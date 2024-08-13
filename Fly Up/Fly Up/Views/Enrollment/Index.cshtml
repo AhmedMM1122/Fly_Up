@@ -1,0 +1,75 @@
+﻿@model Fly_Up.Models.Enroll
+
+<section class="relative about-banner">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Register
+				</h1>
+				<p class="text-white link-nav"><a asp-area="" asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-area="" asp-controller="Enrollment" asp-action="Index"> Register</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<section class="contact-page-area section-gap">
+	<div class="container">
+		<div class="row">
+		</div>
+		<div class="col-lg-8" style="margin-left: 32%;" >
+			<form class="form-area contact-form text-right" method="post" asp-controller="Enrollment" asp-action="Create" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-lg-6 form-group">
+						<input type="hidden" asp-for="Enrollsinfo" />
+						<input type="hidden" asp-for="Is_Deleted" />
+
+						<input placeholder="Enter your First Name" onblur="this.placeholder = 'Enter your First Name'" class="common-input mb-20 form-control" required="" type="text" asp-for="FirstName">
+						<span asp-validation-for="FirstName" class="text-danger"></span>
+						<input placeholder="Enter Last Name" onblur="this.placeholder = 'Enter Last Name'" class="common-input mb-20 form-control" required="" type="text" asp-for="LastName">
+						<span asp-validation-for="LastName" class="text-danger"></span>
+						<input placeholder="Enter Password" onblur="this.placeholder = 'Enter Price'" class="common-input mb-20 form-control" required="" type="password" asp-for="Password">
+						<span asp-validation-for="Password" class="text-danger"></span>
+
+						<input placeholder="Enter Confirm pass" onblur="this.placeholder = 'Enter Confirm pass'" class="common-input mb-20 form-control" required="" type="password" asp-for="Confirmpwd">
+						<span asp-validation-for="Confirmpwd" class="text-danger"></span>
+
+						<input placeholder="Enter Email" onblur="this.placeholder = 'Enter Email'" class="common-input mb-20 form-control" required="" type="email" asp-for="Email">
+						<span asp-validation-for="Email" class="text-danger"></span>
+
+
+						<label asp-for="PhoneNumber">Phone Number</label>
+						<input asp-for="PhoneNumber" class="form-control" />
+						<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+						
+						<label asp-for="Gender">Gender</label>
+						<select asp-for="Gender" class="form-control">
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+						</select>
+						<span asp-validation-for="Gender" class="text-danger"></span>
+
+
+						
+
+
+						
+
+					</div>
+					<br />
+					<br />
+					
+					<div class="col-lg-12" style="text-align: left;">
+						<div class="alert-msg" style="text-align: left;"></div>
+						<button class="genric-btn primary" style="float: right;margin-right: 67%;" type="submit">Register</button>
+					</div>
+
+
+				</div>
+			</form>
+			
+		</div>
+	</div>
+
+</section>

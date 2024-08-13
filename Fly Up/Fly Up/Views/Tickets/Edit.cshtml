@@ -1,0 +1,91 @@
+﻿@model Ticket
+
+<section class="relative about-banner">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Update Ticket
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<div class="row">
+    <form class="col-lg-6 col-md-8 col-sm-10 col-xs-12 mx-auto my-3" method="post" asp-controller="Tickets" asp-action="EditCurrent" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ImagePath" />
+    
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Ticket Name</label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Rating" class="form-label">Rating</label>
+            <input type="text" asp-for="Rating" class="form-control" />
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Price</label>
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input type="number" asp-for="Price" class="form-control" />
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ReleaseDate" class="form-label">ReleaseDate </label>
+            <input asp-for="ReleaseDate" type="datetime-local" class="form-control" />
+            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FlightId" class="form-label">Flight</label>
+            <select asp-for="FlightId" asp-items="@(new SelectList(ViewBag.AllFlights,"Id","Name"))" class="form-select">
+                <option selected disabled>Select...</option>
+            </select>
+            <span asp-validation-for="FlightId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="imageFormFile" class="form-label">Ticket Image</label>
+            <input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg" class="form-control" onchange="SetImgSrc()" />
+        </div>
+
+        <div class="mb-3">
+            <img src="" id="fliImage" class="card-img-top img-fluid rounded mx-auto d-block" style="max-height: 300px;" />
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Edit</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        function SetImgSrc() {
+            const imageFormFile = document.getElementById("imageFormFile");
+            const fliImage = document.getElementById("fliImage");
+
+            if (imageFormFile.files.length > 0) {
+                fliImage.src = window.URL.createObjectURL(imageFormFile.files[0]);
+            } else {
+                fliImage.src = "";
+            }
+        }
+    </script>
+}
